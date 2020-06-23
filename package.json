@@ -12,6 +12,7 @@
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
     "@bitblit/ratchet": "0.8.2",
+    "ngx-electron": "2.2.0",
     "core-js": "2.6.11",
     "rxjs": "6.5.5",
     "source-map-support": "0.5.19",
