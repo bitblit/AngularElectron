@@ -1,6 +1,27 @@
 {
+  "name": "electron-hancock",
+  "description": "The Allpoint Hancock Application",
+  "version": "0.0.16",
+  "engines": {
+    "node": ">=12.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "prettier": {
+    "printWidth": 140,
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
   "scripts": {
-    "dev": "electron-webpack dev"
+    "dev": "electron-webpack dev",
+    "apply-circle": "node node_modules/@bitblit/ratchet/dist/circleci/apply-circle-ci-env-variables-to-files static/build-properties.json",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "publish:win": "yarn compile && yarn electron-builder --win --publish=always"
   },
   "license": "UNLICENSED",
   "dependencies": {
@@ -27,9 +48,14 @@
     "@types/node": "^8.0.46",
     "angular2-template-loader": "0.6.2",
     "electron": "9.0.5",
+    "electron-builder": "22.7.0",
     "electron-webpack": "2.8.2",
+    "electron-webpack-eslint": "6.0.0",
     "electron-webpack-ts": "4.0.1",
     "node-sass": "4.14.1",
+    "husky": "4.2.5",
+    "prettier": "2.0.5",
+    "pretty-quick": "2.0.1",
     "sass-loader": "8.0.2",
     "typescript": "3.8.3",
     "webpack": "4.43.0"
