@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "dev": "electron-webpack dev"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@angular/common": "8.2.14",
+    "@angular/compiler": "8.2.14",
+    "@angular/core": "8.2.14",
+    "@angular/forms": "8.2.14",
+    "@angular/platform-browser": "8.2.14",
+    "@angular/platform-browser-dynamic": "8.2.14",
+    "@angular/router": "8.2.14",
+    "@bitblit/ratchet": "0.8.2",
+    "core-js": "2.6.11",
+    "rxjs": "6.5.5",
+    "source-map-support": "0.5.19",
+    "zone.js": "0.10.3"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.46",
+    "angular2-template-loader": "0.6.2",
+    "electron": "9.0.5",
+    "electron-webpack": "2.8.2",
+    "electron-webpack-ts": "4.0.1",
+    "node-sass": "4.14.1",
+    "sass-loader": "8.0.2",
+    "typescript": "3.8.3",
+    "webpack": "4.43.0"
+  },
+  "electronWebpack": {
+    "renderer": {
+      "webpackConfig": "webpack.renderer.additions.js"
+    }
+  }
+}
