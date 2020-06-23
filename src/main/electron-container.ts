@@ -1,15 +1,12 @@
-
 import { Injector, StaticProvider } from '@angular/core';
 import { Logger } from '@bitblit/ratchet/dist/common/logger';
 
-import {MainWindowFactory} from './main-window-factory';
-import {ApplicationConstants} from './application-constants';
+import { MainWindowFactory } from './main-window-factory';
+import { ApplicationConstants } from './application-constants';
 
 export class ElectronContainer {
   private static CONTAINER: Injector;
-  public static PROVIDERS: StaticProvider[] = [
-    { provide: MainWindowFactory, deps: [] }
-  ];
+  public static PROVIDERS: StaticProvider[] = [{ provide: MainWindowFactory, deps: [] }];
 
   private constructor() {}
 

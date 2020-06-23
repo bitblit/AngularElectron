@@ -1,10 +1,8 @@
-
-
 import { app, BrowserWindow } from 'electron';
 import { Logger } from '@bitblit/ratchet/dist/common/logger';
 import { Injector } from '@angular/core';
-import {ElectronContainer} from './electron-container';
-import {MainWindowFactory} from './main-window-factory';
+import { ElectronContainer } from './electron-container';
+import { MainWindowFactory } from './main-window-factory';
 
 Logger.info('Starting main file, app version is %s', app.getVersion());
 
@@ -12,36 +10,35 @@ Logger.info('Starting main file, app version is %s', app.getVersion());
 let mainWindow: BrowserWindow = null;
 
 async function createMainWindow(): Promise<BrowserWindow> {
-    const container: Injector = ElectronContainer.getContainer();
-    // Create and Register the main window
-    return container.get(MainWindowFactory).fetchOrCreateMainWindow();
+  const container: Injector = ElectronContainer.getContainer();
+  // Create and Register the main window
+  return container.get(MainWindowFactory).fetchOrCreateMainWindow();
 }
 
 // quit application when all windows are closed
 app.on('window-all-closed', () => {
-    // on macOS it is common for applications to stay open until the user explicitly quits
-    //if (process.platform !== 'darwin') {
-    //  app.quit()
-    //}
-    app.quit();
+  // on macOS it is common for applications to stay open until the user explicitly quits
+  //if (process.platform !== 'darwin') {
+  //  app.quit()
+  //}
+  app.quit();
 });
 
 app.on('activate', () => {
-    // on macOS it is common to re-create a window even after all windows have been closed
-    if (mainWindow === null) {
-        createMainWindow().then(win => {
-            mainWindow = win;
-        });
-    }
+  // on macOS it is common to re-create a window even after all windows have been closed
+  if (mainWindow === null) {
+    createMainWindow().then((win) => {
+      mainWindow = win;
+    });
+  }
 });
 
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
-    createMainWindow().then(win => {
-        mainWindow = win;
-    });
+  createMainWindow().then((win) => {
+    mainWindow = win;
+  });
 });
-
 
 /*
 import { app, BrowserWindow } from 'electron'
