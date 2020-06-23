@@ -5,15 +5,23 @@ import {FormsModule} from "@angular/forms";
 import {AppComponent} from "./app.component";
 import {NgxElectronModule} from "ngx-electron";
 import {ElectronCommunicationService} from './service/electron-communication.service';
+import {Test1Component} from './component/test1/test1.component';
+import {Test2Component} from './component/test2/test2.component';
+import {AppRoutingModule} from './app-routing.module';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        NgxElectronModule
+        NgxElectronModule,
+        MatCardModule,
+        AppRoutingModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        Test1Component,
+        Test2Component
     ],
     providers: [
         ElectronCommunicationService
