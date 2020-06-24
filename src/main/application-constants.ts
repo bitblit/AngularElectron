@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Logger } from '@bitblit/ratchet/dist/common/logger';
 import { StringRatchet } from '@bitblit/ratchet/dist/common/string-ratchet';
+declare const __static: string;
 
 export class ApplicationConstants {
   public static readonly VERSION_SPEC: number = 1;
