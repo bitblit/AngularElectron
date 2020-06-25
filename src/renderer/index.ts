@@ -1,9 +1,6 @@
 // Polyfills
 import 'core-js/es7/reflect';
-import 'zone.js/dist/zone'; // Included with Angular CLI.
-
-// require("zone.js/dist/zone");
-
+import 'zone.js/dist/zone'; // Included with Angular CLI. Was require("zone.js/dist/zone");
 // Vendor
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
@@ -11,9 +8,7 @@ import '@angular/core';
 import '@angular/common';
 import '@angular/router';
 import 'rxjs';
-
-// main
-
+// Main
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { AppModule } from './app/app.module';

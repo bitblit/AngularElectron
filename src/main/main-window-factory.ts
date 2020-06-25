@@ -4,7 +4,7 @@ import { StringRatchet } from '@bitblit/ratchet/dist/common/string-ratchet';
 import { ApplicationConstants } from './application-constants';
 import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions;
 import { autoUpdater } from 'electron-updater';
-import * as AutoLaunch from 'auto-launch';
+import AutoLaunch from 'auto-launch';
 
 export class MainWindowFactory {
   private _mainWindow: Electron.BrowserWindow = null;
