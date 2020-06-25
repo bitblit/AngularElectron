@@ -8,13 +8,15 @@ import {ElectronCommunicationService} from './service/electron-communication.ser
 import {Test1Component} from './component/test1/test1.component';
 import {Test2Component} from './component/test2/test2.component';
 import {AppRoutingModule} from './app-routing.module';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         NgxElectronModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MatCardModule
     ],
     declarations: [
         AppComponent,
