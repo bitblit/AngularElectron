@@ -12,6 +12,7 @@ export class MainWindowFactory {
   private autoLauncher: AutoLaunch;
 
   constructor() {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     const autoLaunchCfg: any = {
       name: 'AngularElectron',
       hidden: false,
@@ -158,9 +159,11 @@ export class MainWindowFactory {
   public async setAutoStart(newValue: boolean): Promise<boolean> {
     Logger.info('Setting auto-start to %s', newValue);
     if (newValue) {
-      const wait: any = this.autoLauncher.enable();
+      const toggleVal: any = this.autoLauncher.enable();
+      Logger.info('Enable returned %s', toggleVal);
     } else {
-      const wait: any = this.autoLauncher.disable();
+      const toggleVal: any = this.autoLauncher.disable();
+      Logger.info('Enable returned %s', toggleVal);
     }
 
     const updated: boolean = await this.autoLauncher.isEnabled();

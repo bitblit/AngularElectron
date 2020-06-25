@@ -8,7 +8,8 @@ export class ElectronContainer {
   private static CONTAINER: Injector;
   public static PROVIDERS: StaticProvider[] = [{ provide: MainWindowFactory, deps: [] }];
 
-  /* eslint-disable @typescript-eslint/no-empty-function Singleton */
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  // Singleton, prevent instantiation
   private constructor() {}
 
   public static getContainer(): Injector {

@@ -11,7 +11,8 @@ export class ApplicationConstants {
   public static readonly GUID: string = StringRatchet.createType4Guid(); // Not really useful, but consistent
   private static BUILD_INFO: BuildInfo;
 
-  /* eslint-disable @typescript-eslint/no-empty-function Singleton */
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  // Singleton, prevent instantiation
   private constructor() {}
 
   public static getBuildInfo(): BuildInfo {
