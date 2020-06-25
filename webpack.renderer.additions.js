@@ -1,4 +1,3 @@
-
 module.exports = {
     module: {
         rules: [
@@ -7,12 +6,24 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: "ts-loader"
+                        loader: "ts-loader",
                     },
                     {
                         loader: "angular2-template-loader"
                     }
                 ]
+            },
+            {
+                test: /\.(html)$/,
+                loader: "html-loader",
+                options: {
+                    minimize: {
+                        removeAttributeQuotes: false,
+                        keepClosingSlash: true,
+                        caseSensitive: true,
+                        conservativeCollapse: true,
+                    }
+                }
             }
         ]
     }
