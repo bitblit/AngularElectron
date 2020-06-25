@@ -1,10 +1,11 @@
 import { Logger } from '@bitblit/ratchet/dist/common/logger';
-import { app, BrowserWindow, globalShortcut, ipcMain, Menu } from 'electron';
+import { BrowserWindow, globalShortcut, ipcMain, Menu } from 'electron';
 import { StringRatchet } from '@bitblit/ratchet/dist/common/string-ratchet';
 import { ApplicationConstants } from './application-constants';
 import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions;
-import { autoUpdater } from 'electron-updater';
+import { autoUpdater, UpdateCheckResult } from 'electron-updater';
 import AutoLaunch from 'auto-launch';
+import IpcMainEvent = Electron.IpcMainEvent;
 
 export class MainWindowFactory {
   private _mainWindow: Electron.BrowserWindow = null;
@@ -12,7 +13,7 @@ export class MainWindowFactory {
 
   constructor() {
     const autoLaunchCfg: any = {
-      name: 'Hancock',
+      name: 'AngularElectron',
       hidden: false,
     };
     this.autoLauncher = new AutoLaunch(autoLaunchCfg);
@@ -34,7 +35,7 @@ export class MainWindowFactory {
 
       // Always check for an update
       Logger.info('Window created - checking for update');
-      const res: any = await autoUpdater.checkForUpdatesAndNotify();
+      const res: UpdateCheckResult = await autoUpdater.checkForUpdatesAndNotify();
       Logger.info('Update check returned %j', res);
 
       newWindow.on('closed', () => {
@@ -53,15 +54,15 @@ export class MainWindowFactory {
       this.setupGlobalShortcuts();
 
       // Setup ipc channels
-      ipcMain.on('web-to-app-data', (event, arg) => this.handleBrowserSyncEvent(event, arg));
+      ipcMain.on('web-to-app-data', (event) => this.handleBrowserSyncEvent(event));
 
       this._mainWindow = newWindow;
     }
     return this._mainWindow;
   }
 
-  public handleBrowserSyncEvent(event: any, arg: any): void {
-    Logger.info('Got browser event : %j', arg);
+  public handleBrowserSyncEvent(event: IpcMainEvent): void {
+    Logger.info('Got browser event : %j', event);
 
     event.returnValue = {
       time: new Date().getTime(),
@@ -93,7 +94,7 @@ export class MainWindowFactory {
           {
             label: 'Test1',
             click: (item, focusedWindow) => {
-              Logger.info('Sending message to window');
+              Logger.info('Sending message to window (i: %j, w: %j)', item, focusedWindow);
               this._mainWindow.webContents.send('app-to-web-data', { msg: 'test1', time: new Date() });
             },
           },
@@ -107,6 +108,7 @@ export class MainWindowFactory {
                 label: 'Update application',
                 accelerator: 'CmdOrCtrl+U',
                 click: (item, focusedWindow) => {
+                  Logger.info('Update upp (i: %j, w: %j)', item, focusedWindow);
                   this.cmdUpdateSelf();
                 },
               },
@@ -118,12 +120,14 @@ export class MainWindowFactory {
               {
                 label: 'Enable AutoStart',
                 click: (item, focusedWindow) => {
+                  Logger.info('Auto-start E (i: %j, w: %j)', item, focusedWindow);
                   this.cmdEnableAutoStart();
                 },
               },
               {
                 label: 'Disable AutoStart',
                 click: (item, focusedWindow) => {
+                  Logger.info('Auto-start D (i: %j, w: %j)', item, focusedWindow);
                   this.cmdDisableAutoStart();
                 },
               },

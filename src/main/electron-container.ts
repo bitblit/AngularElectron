@@ -8,6 +8,7 @@ export class ElectronContainer {
   private static CONTAINER: Injector;
   public static PROVIDERS: StaticProvider[] = [{ provide: MainWindowFactory, deps: [] }];
 
+  /* eslint-disable @typescript-eslint/no-empty-function Singleton */
   private constructor() {}
 
   public static getContainer(): Injector {
@@ -25,7 +26,7 @@ export class ElectronContainer {
     return ElectronContainer.CONTAINER;
   }
 
-  public static get(token: any, notFoundValue?: any): any {
+  public static get<T>(token: T, notFoundValue?: T): T {
     return ElectronContainer.getContainer().get(token, notFoundValue);
   }
 }
