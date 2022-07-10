@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import {Test1Component} from './component/test1/test1.component';
-import {Test2Component} from './component/test2/test2.component';
+import { Test1Component } from './component/test1/test1.component';
+import { Test2Component } from './component/test2/test2.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/test1',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'test1',
@@ -16,12 +16,12 @@ const routes: Routes = [
   },
   {
     path: 'test2',
-    component: Test2Component
-  }
+    component: Test2Component,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
