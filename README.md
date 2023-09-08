@@ -1,5 +1,11 @@
 # AngularElectron
 
+
+## Deprecation Notice
+As of 2023-09-08 I'm going to move this repo into archive status - There are other, better maintained
+repos such as https://github.com/maximegris/angular-electron/tree/main and I'm not focused on this one
+enough to keep the security holes closed.
+
 ## Usage note
 As of 2022-07-10, I have updated the libs on this so that at least they don't include security holes, but they
 don't really work well together either.  Once I get a chance to work on a full stack again I'll backport what I learn
